@@ -8,6 +8,8 @@
  *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
+
+/*
 class Solution {
     public ListNode middleNode(ListNode head) {
         ListNode p1 = head;
@@ -24,5 +26,19 @@ class Solution {
             }
             flag = !flag;
         }
+    }
+}
+*/
+
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        ListNode pf = head;
+        ListNode ps = head;
+        while(pf!=null && pf.next!=null){
+            pf = pf.next;
+            ps = ps.next;
+            pf = pf.next;
+        }
+        return ps;
     }
 }
