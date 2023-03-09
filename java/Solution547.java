@@ -13,7 +13,7 @@ class Solution {
             }
             isConnected[city][city] = 0;
             res ++;
-            // static connected city
+            // handle connected city
             for(int connect=city+1; connect< size; connect++){
                 if(isConnected[city][connect]==1){
                     check[pf++] = connect;
