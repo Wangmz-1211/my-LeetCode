@@ -12,3 +12,15 @@ class Solution {
         return ps;
     }
 }
+
+class Solution {
+    public int removeElement(int[] nums, int val) {
+        int bias = 0, p = 0;
+        while(bias + p < nums.length) {
+            nums[p] = nums[p+ bias];
+            if(nums[p] == val) bias ++;
+            else p++;
+        }
+        return p;
+    }
+}
