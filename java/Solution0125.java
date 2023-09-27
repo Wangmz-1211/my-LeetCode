@@ -36,3 +36,29 @@ class Solution {
         a == b || a - b == 'A' - 'a' || b - a == 'A' - 'a'; 
     }
 }
+
+class Solution {
+    public boolean isPalindrome(String s) {
+        int n = s.length();
+        int l = 0, r = n-1;
+        char cl = 0, cr = 0;
+        while(l < r) {
+            cl = s.charAt(l);
+            cr = s.charAt(r);
+            if( 'A' <= cl && cl <= 'Z') cl += 32;
+            if( 'A' <= cr && cr <= 'Z') cr += 32;
+            if( !('a' <= cl && cl <= 'z' || '0' <= cl && cl <= '9')) {
+                l++;
+                continue;
+            }
+            if( !('a' <= cr && cr <= 'z' || '0' <= cr && cr <= '9')) {
+                r--;
+                continue;
+            }
+            if( cl != cr) return false;
+            l++;
+            r--;
+        }
+        return true;
+    }
+}
