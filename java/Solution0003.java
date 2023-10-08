@@ -64,4 +64,25 @@ class Solution {
     }
 }
 
-// 1ms 41.7MB
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int n = s.length();
+        boolean[] flags = new boolean[128];
+        int ps = 0, pf = 0;
+        int ans = 0;
+        while(pf < n) {
+            char c = s.charAt(pf);
+            if( !flags[c] ) {
+                flags[c] = true;
+                pf++;
+            } else {
+                c = s.charAt(ps);
+                flags[c] = false;
+                ps ++;
+            }
+            ans = Math.max(ans, pf- ps);
+        }
+        return ans;
+    }
+}
