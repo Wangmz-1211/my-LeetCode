@@ -1,3 +1,4 @@
+// shit
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         int[] res = new int[2];
@@ -30,6 +31,7 @@ class Solution {
     }
 }
 
+// 1ms perfect
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> map = new HashMap<>();
@@ -42,5 +44,34 @@ class Solution {
         }
         return new int[] {0, 0};
 
+    }
+}
+
+// 2ms
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int[] nsort = Arrays.copyOf(nums, nums.length);
+        Arrays.sort(nsort);
+        int ps = 0, pf = nsort.length-1;
+        int ts = 0, tf = 0, sum = 0;
+        while(ps < pf) {
+            if((sum = nsort[ps] + nsort[pf]) == target) {
+                ts = nsort[ps]; tf= nsort[pf]; break;
+            } else if ( sum < target) ps++;
+            else pf--;
+        }
+        int[] ans = {-1, -1};
+        for(int i = 0; i < nums.length; i ++) {
+            if(ans[0]!= -1 && ans[1] != -1) return ans;
+            if(nums[i] == ts && ans[0] == -1) {
+                ans[0] = i;
+                continue;
+            }
+            if(nums[i] == tf && ans[1] == -1) {
+                ans[1] = i;
+                continue;
+            }
+        }
+        return ans;
     }
 }
