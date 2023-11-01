@@ -23,3 +23,23 @@ class Solution {
         return stack.isEmpty();
     }
 }
+
+class Solution {
+    public boolean isValid(String s) {
+        Deque<Character> stack = new ArrayDeque<>();
+        for(Character c: s.toCharArray()){
+            if(c == '(' || c=='[' || c=='{') {
+                stack.push(c);
+            } else {
+                if(stack.isEmpty()) return false;
+                Character pre = stack.pop();
+                if((c == ')' && pre == '(')
+                || (c == ']' && pre == '[')
+                || (c == '}' && pre == '{')
+                ) continue;
+                else return false;
+            }
+        }
+        return stack.isEmpty();
+    }
+
