@@ -22,3 +22,18 @@ public class Solution {
         return false;
     }
 }
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        ListNode pf = head, ps = head;
+        while(pf != null && ps != null) {
+            pf = pf.next;
+            if(pf == null) return false;
+            else pf = pf.next;
+            if(pf == null) return false;
+            ps = ps.next;
+            if(ps == null) return false;
+            if(pf == ps ) return true;
+        }
+        return false;
+    }
+}
